@@ -1,5 +1,7 @@
-# RecyclerviewDragNDropItem
-This project avilable feature to recyclerview item drag and drog to set oder position
-Screen shot
+# Plen 2 Application
+This project is for school purposes in cooperation with Peter & Partner.
 
-<img src="https://github.com/sunil676/RecyclerviewDragNDropItem/blob/master/device-2016-02-27-130338.png" width="492" height="871"/>
+The bluetooth connection will be added in the future. So far, only the graphical components were added.
+
+
+<img src="https://i.pinimg.com/originals/bb/74/da/bb74da14a5582775e721d3704762bbc5.png"/>
