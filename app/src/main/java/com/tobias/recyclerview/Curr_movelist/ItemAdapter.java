@@ -1,4 +1,4 @@
-package com.tobias.recyclerview;
+package com.tobias.recyclerview.Curr_movelist;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -12,13 +12,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
+import com.tobias.recyclerview.ItemTouchHelperAdapter;
+import com.tobias.recyclerview.ItemTouchHelperViewHolder;
+import com.tobias.recyclerview.Move;
+import com.tobias.recyclerview.OnStartDragListener;
+import com.tobias.recyclerview.R;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 /**
- * Created by sunil on 27-Feb-16.
+ * Created by Tobias
  */
 public class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements ItemTouchHelperAdapter {
 
@@ -94,7 +99,7 @@ public class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
         this.mItemClickListener = mItemClickListener;
     }
 
-    public class VHItem extends RecyclerView.ViewHolder implements View.OnClickListener ,ItemTouchHelperViewHolder{
+    public class VHItem extends RecyclerView.ViewHolder implements View.OnClickListener ,ItemTouchHelperViewHolder {
         public TextView title;
         private ImageView imageView;
         private ImageView image_menu;

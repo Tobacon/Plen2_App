@@ -1,23 +1,25 @@
-package com.tobias.recyclerview;
+package com.tobias.recyclerview.static_movelist;
 
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 
+import com.tobias.recyclerview.Curr_movelist.ItemAdapter;
+
 
 /**
- * Created by Sunil on 20-Oct-15.
+ * Created by Tobias
  */
-public class EditItemTouchHelperCallback extends ItemTouchHelper.Callback {
+public class EditItemTouchHelperCallbackBasic extends ItemTouchHelper.Callback {
 
-    private final ItemAdapter mAdapter;
+    private final ItemAdapterBasic mAdapter;
 
-    public EditItemTouchHelperCallback(ItemAdapter adapter) {
+    public EditItemTouchHelperCallbackBasic(ItemAdapterBasic adapter) {
         mAdapter = adapter;
     }
 
     @Override
     public boolean isLongPressDragEnabled() {
-        return true;
+        return false;
     }
 
     @Override
@@ -27,7 +29,7 @@ public class EditItemTouchHelperCallback extends ItemTouchHelper.Callback {
 
     @Override
     public int getMovementFlags(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
-        int dragFlags = ItemTouchHelper.UP | ItemTouchHelper.DOWN;
+        int dragFlags = ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT;
         int swipeFlags = ItemTouchHelper.START | ItemTouchHelper.END;
         return makeMovementFlags(dragFlags, swipeFlags);
     }

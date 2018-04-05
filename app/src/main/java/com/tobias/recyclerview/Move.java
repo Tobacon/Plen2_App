@@ -1,7 +1,7 @@
 package com.tobias.recyclerview;
 
 /**
- * Created by Tobias on 02.04.2018.
+ * Created by Tobias
  */
 
 public class Move {

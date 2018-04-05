@@ -8,11 +8,21 @@ import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import com.tobias.recyclerview.Curr_movelist.EditItemTouchHelperCallback;
+import com.tobias.recyclerview.Curr_movelist.ItemAdapter;
+import com.tobias.recyclerview.static_movelist.EditItemTouchHelperCallbackBasic;
+import com.tobias.recyclerview.static_movelist.ItemAdapterBasic;
 
 import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+
+/**
+ * Created by Tobias
+ */
 
 public class MainActivity extends AppCompatActivity implements OnStartDragListener{
 
@@ -41,6 +51,25 @@ public class MainActivity extends AppCompatActivity implements OnStartDragListen
         mItemTouchHelper.attachToRecyclerView(mRecyclerView);
 
         mRecyclerView.setAdapter(mAdapter);
+
+
+
+
+
+        //Set up basic list here
+        RecyclerView mBasicRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_moves);
+        ArrayList<Move> basiclist = (ArrayList<Move>) Utility.getListPerson();
+        mBasicRecyclerView.setHasFixedSize(true);
+        LinearLayoutManager mBasicLineatLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        mBasicRecyclerView.setLayoutManager(mBasicLineatLayoutManager);
+        ItemAdapterBasic mBasicAdapter =new ItemAdapterBasic(this, basiclist, new ItemTouchHelperClick() {
+            @Override
+            public void onClick(Move move) {
+                Toast.makeText(MainActivity.this, "Test", Toast.LENGTH_SHORT).show();
+            }
+        });
+        mBasicRecyclerView.setAdapter(mBasicAdapter);
+        //Finished setting up the basic list
     }
 
     @Override

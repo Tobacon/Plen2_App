@@ -1,7 +1,7 @@
 package com.tobias.recyclerview;
 
 /**
- * Created by sunil on 27-Feb-16.
+ * Created by Tobias
  */
 public interface ItemTouchHelperAdapter {
 
