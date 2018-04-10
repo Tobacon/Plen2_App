@@ -61,7 +61,6 @@ public class ItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
     }
 
 
-
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, final int i) {
 

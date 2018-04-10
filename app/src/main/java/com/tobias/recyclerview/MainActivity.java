@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 import com.tobias.recyclerview.Curr_movelist.EditItemTouchHelperCallback;
 import com.tobias.recyclerview.Curr_movelist.ItemAdapter;
-import com.tobias.recyclerview.static_movelist.EditItemTouchHelperCallbackBasic;
 import com.tobias.recyclerview.static_movelist.ItemAdapterBasic;
 
 import java.util.ArrayList;
@@ -29,6 +28,9 @@ public class MainActivity extends AppCompatActivity implements OnStartDragListen
     @Bind(R.id.recycler_view)
     RecyclerView mRecyclerView;
     ItemTouchHelper mItemTouchHelper;
+    ArrayList<Move> list;
+    ItemAdapter mAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,24 +39,17 @@ public class MainActivity extends AppCompatActivity implements OnStartDragListen
         setSupportActionBar(toolbar);
         ButterKnife.bind(this);
 
-        //FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab); fab.setOnClickListener(new View.OnClickListener() {@Override public void onClick(View view) { Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();}});*/
-        ArrayList<Move> list = (ArrayList<Move>) Utility.getListPerson();
-
+        list = new ArrayList<>();
         mRecyclerView.setHasFixedSize(true);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        ItemAdapter mAdapter = new ItemAdapter(this, list, this);
+        mAdapter = new ItemAdapter(this, list, this);
         ItemTouchHelper.Callback callback =
                 new EditItemTouchHelperCallback(mAdapter);
         mItemTouchHelper = new ItemTouchHelper(callback);
         mItemTouchHelper.attachToRecyclerView(mRecyclerView);
-
         mRecyclerView.setAdapter(mAdapter);
-
-
-
-
 
         //Set up basic list here
         RecyclerView mBasicRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_moves);
@@ -65,12 +60,14 @@ public class MainActivity extends AppCompatActivity implements OnStartDragListen
         ItemAdapterBasic mBasicAdapter =new ItemAdapterBasic(this, basiclist, new ItemTouchHelperClick() {
             @Override
             public void onClick(Move move) {
-                Toast.makeText(MainActivity.this, "Test", Toast.LENGTH_SHORT).show();
+                list.add(move);
+                mAdapter.updateList(list);
             }
         });
         mBasicRecyclerView.setAdapter(mBasicAdapter);
         //Finished setting up the basic list
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -88,7 +85,15 @@ public class MainActivity extends AppCompatActivity implements OnStartDragListen
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Toast.makeText(this, "Not implemented just yet!", Toast.LENGTH_SHORT).show();
             return true;
+        }
+        if(id == R.id.play_button){
+            list = new ArrayList<>();
+            mAdapter.updateList(list);
+        }
+        if(id == R.id.search_button){
+            Toast.makeText(this, "Not implemented just yet!", Toast.LENGTH_SHORT).show();
         }
 
         return super.onOptionsItemSelected(item);
